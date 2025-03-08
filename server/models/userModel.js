@@ -23,7 +23,7 @@ userSchema.statics.signup = async function (username, password) {
         throw Error('All fields must be entered')
     }
 
-    const exists = await this.findOne(username)
+    const exists = await this.findOne({username})
 
     if(exists) {
         throw Error('Username already in use')
@@ -38,10 +38,14 @@ userSchema.statics.signup = async function (username, password) {
 
 //STATIC LOGIN
 userSchema.statics.login = async function (username, password) {
-    const exists = await this.findOne(username)
+    if(!username || !password) {
+        throw Error('All fields must entered')
+    }
     
-    if(exists) {
-        throw Error('Username already in use')
+    const user = await this.findOne({username})
+
+    if(!username) {
+        throw Error('User not found')
     }
 
     const match = await bcrypt.compare(password, user.password)
