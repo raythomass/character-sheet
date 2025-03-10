@@ -51,6 +51,25 @@ const createCharacter = async (req, res) => {
                 current: req.body.current,
                 max: req.body.max,
                 temp: req.body.temp
+            },
+            saving_throws: req.body.saving_throws || {
+                strength: { value: 0, proficient: false },
+                dexterity: { value: 0, proficient: false },
+                constitution: { value: 0, proficient: false },
+                intelligence: { value: 0, proficient: false },
+                wisdom: { value: 0, proficient: false },
+                charisma: { value: 0, proficient: false },
+            },
+            senses: req.body.senses || {
+                passive_perception: 0,
+                passive_investigation: 0,
+                passive_insight: 0
+            },
+            proficiencies: req.body.proficiencies || {
+                armor: [],
+                weapons: [],
+                tools: [],
+                languages: []
             }
         })
 
