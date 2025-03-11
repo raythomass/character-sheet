@@ -24,6 +24,9 @@ const characterSchema = new mongoose.Schema({
     walking_speed: { type: Number },
     initiative: { type: Number },
     armor_class: { type: Number },
+    inspiration: { type: Boolean },
+    defenses: [{ type: String }],
+    conditions: [{ type: String }],
 
     health: {
         current: { type: Number },
@@ -69,6 +72,27 @@ const characterSchema = new mongoose.Schema({
         weapons: [{ type: String }],
         tools: [{ type: String }],
         languages: [{ type: String }],
+      },
+
+      skills: {
+        acrobatics:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        animal_handling:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        arcana:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        athletics:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        deception:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        history:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        insight:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        intimidation:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        investigation:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        medicine:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        nature:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        perception:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        performance:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        persuasion:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        religion:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        sleight_of_hand:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        stealth:{ proficiency_level: { type: Number }, modifier: { type: Number } },
+        survival:{ proficiency_level: { type: Number }, modifier: { type: Number } },
       }
 })
 

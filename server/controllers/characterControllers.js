@@ -47,6 +47,9 @@ const createCharacter = async (req, res) => {
             walking_speed: req.body.walking_speed,
             initiative: req.body.initiative,
             armor_class: req.body.armor_class,
+            inspiration: req.body.inspiration,
+            defenses: req.body.defenses,
+            conditions: req.body.conditions,
             health: {
                 current: req.body.current,
                 max: req.body.max,
@@ -70,6 +73,26 @@ const createCharacter = async (req, res) => {
                 weapons: [],
                 tools: [],
                 languages: []
+            },
+            skills: req.body.skills || {
+                acrobatics: { proficiency_level: 0, modifier: 0 },
+                animal_handling: { proficiency_level: 0, modifier: 0 },
+                arcana: { proficiency_level: 0, modifier: 0 },
+                athletics: { proficiency_level: 0, modifier: 0 },
+                deception: { proficiency_level: 0, modifier: 0 },
+                history: { proficiency_level: 0, modifier: 0 },
+                insight: { proficiency_level: 0, modifier: 0 },
+                intimidation: { proficiency_level: 0, modifier: 0 },
+                investigation: { proficiency_level: 0, modifier: 0 },
+                medicine: { proficiency_level: 0, modifier: 0 },
+                nature: { proficiency_level: 0, modifier: 0 },
+                perception: { proficiency_level: 0, modifier: 0 },
+                performance: { proficiency_level: 0, modifier: 0 },
+                persuasion: { proficiency_level: 0, modifier: 0 },
+                religion: { proficiency_level: 0, modifier: 0 },
+                sleight_of_hand: { proficiency_level: 0, modifier: 0 },
+                stealth: { proficiency_level: 0, modifier: 0 },
+                survival: { proficiency_level: 0, modifier: 0 },
             }
         })
 
