@@ -93,7 +93,17 @@ const characterSchema = new mongoose.Schema({
         sleight_of_hand:{ proficiency_level: { type: Number }, modifier: { type: Number } },
         stealth:{ proficiency_level: { type: Number }, modifier: { type: Number } },
         survival:{ proficiency_level: { type: Number }, modifier: { type: Number } },
-      }
+      },
+       actions: [{
+        //GENERAL DETAILS
+        name: { type: String },
+        type: {
+            type: String,
+            enum: [ Attack, Spell ],
+        },
+        proficient: { type: String },
+        description: { type: String },
+       }]
 })
 
 const Character = mongoose.model("Character", characterSchema)
