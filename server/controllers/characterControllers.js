@@ -43,17 +43,17 @@ const createCharacter = async (req, res) => {
                 wisdom: 10,
                 charisma: 10,
             },
-            proficiency_bonus: req.body.proficiency_bonus,
-            walking_speed: req.body.walking_speed,
-            initiative: req.body.initiative,
-            armor_class: req.body.armor_class,
-            inspiration: req.body.inspiration,
-            defenses: req.body.defenses,
-            conditions: req.body.conditions,
+            proficiency_bonus: req.body.proficiency_bonus || 0,
+            walking_speed: req.body.walking_speed || 0,
+            initiative: req.body.initiative || 0,
+            armor_class: req.body.armor_class || 0,
+            inspiration: req.body.inspiration || false,
+            defenses: req.body.defenses || "None",
+            conditions: req.body.conditions || "None",
             health: {
-                current: req.body.current,
-                max: req.body.max,
-                temp: req.body.temp
+                current: req.body.current || 0,
+                max: req.body.max || 0,
+                temp: req.body.temp || 0,
             },
             saving_throws: req.body.saving_throws || {
                 strength: { value: 0, proficient: false },
@@ -93,7 +93,8 @@ const createCharacter = async (req, res) => {
                 sleight_of_hand: { proficiency_level: 0, modifier: 0 },
                 stealth: { proficiency_level: 0, modifier: 0 },
                 survival: { proficiency_level: 0, modifier: 0 },
-            }
+            },
+            actions: req.body.actions
         })
 
         const savedCharacter = await character.save();
