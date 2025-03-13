@@ -95,7 +95,6 @@ const characterSchema = new mongoose.Schema({
         survival:{ proficiency_level: { type: Number }, modifier: { type: Number } },
       },
        actions: [{
-        //GENERAL DETAILS
         name: { type: String },
         type: {
             type: String,
@@ -103,6 +102,18 @@ const characterSchema = new mongoose.Schema({
         },
         proficient: { type: String },
         description: { type: String },
+        damage: { type: String },
+        damage_type: { type: String },
+        reach: { type: String },
+        range: { type: String },
+        area: { type: String },
+        cast: { type: String },
+        casting_time: { type: String },
+        components: { type: String },
+        duration: { type: String },
+        weight: { type: String },
+        cost: { type: String },
+        properties: [{ type: String }],
        }]
 })
 
