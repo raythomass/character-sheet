@@ -94,7 +94,10 @@ const createCharacter = async (req, res) => {
                 stealth: { proficiency_level: 0, modifier: 0 },
                 survival: { proficiency_level: 0, modifier: 0 },
             },
-            actions: req.body.actions
+            actions: req.body.actions,
+            bonus_actions: req.body.actions,
+            reactions: req.body.reactions,
+            other_abilities: req.body.other_abilities
         })
 
         const savedCharacter = await character.save();
