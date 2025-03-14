@@ -95,14 +95,21 @@ const characterSchema = new mongoose.Schema({
         survival:{ proficiency_level: { type: Number }, modifier: { type: Number } },
       },
        actions: [{
-        name: { type: String },
+        name: { type: String, require: true },
         type: {
             type: String,
-            enum: [ "Attack", "Spell" ],
+            enum: [ "Attack", "Spell", "Custom" ],
+            required: true
         },
         proficient: { type: String },
         description: { type: String },
+        rarity: { type : String },
         attack_type: { type: String },
+        attack_bonus: { type: String },
+        usage: {
+            type: String,
+            default: "At-will"
+         },
         damage: { type: String },
         damage_type: { type: String },
         damage_scale: { type: String },
@@ -115,10 +122,69 @@ const characterSchema = new mongoose.Schema({
         casting_time: { type: String },
         components: { type: String },
         duration: { type: String },
+        save_dc: { type: Number },
+        school: { type: String },
         weight: { type: String },
         cost: { type: String },
         properties: [{ type: String }],
-       }]
+        mastery: {
+            mastery_name: { type: String },
+            mastery_description: { type: String }
+        }
+       }],
+       bonus_actions: [{
+        name: { type: String, required: true },
+        type: {
+            type: String,
+            enum: ["Feature", "Attack", "Spell", "Custom"],
+            required: true
+        },
+        description: { type: String },
+        usage: { type: String },
+        attack_bonus: { type: Number },
+        damage: { type: String },
+        range: { type: String },
+        spell_level: { type: Number },
+        save_dc: { type: Number },
+        effect: { type: String },
+       }],
+       reactions: [
+        {
+          name: { type: String, required: true },
+          type: {
+            type: String,
+            enum: ["Feature", "Spell", "Attack", "Custom"],
+            required: true
+        },
+          description: { type: String },
+          trigger: { type: String },
+          attack_bonus: { type: Number }, 
+          damage: { type: String },
+          range: { type: String }, 
+          spell_level: { type: Number }, 
+          components: { type: String }, 
+          save_dc: { type: Number }, 
+          effect: { type: String }
+        }
+      ],
+      other_abilities: [
+        {
+          name: { type: String, required: true },
+          type: {
+            type: String,
+            enum: ["Class Feature", "Racial Trait", "Custom"],
+            required: true
+        },
+          description: { type: String },
+          uses: { type: Number, default: 0 },
+          recharge: {
+            type: String,
+            enum: ["Short Rest", "Long Rest", "Daily", "At-will", "Special"],
+            default: "At-will"
+        },
+          effect: { type: String }
+        }
+      ]
 })
 
 const Character = mongoose.model("Character", characterSchema)
