@@ -126,7 +126,7 @@ const characterSchema = new mongoose.Schema({
         school: { type: String },
         weight: { type: String },
         cost: { type: String },
-        properties: [{ type: String }],
+        properties: { type: [String] },
         mastery: {
             mastery_name: { type: String },
             mastery_description: { type: String }
@@ -143,6 +143,7 @@ const characterSchema = new mongoose.Schema({
         usage: { type: String },
         attack_bonus: { type: Number },
         damage: { type: String },
+        damage_scale: { type: String },
         range: { type: String },
         spell_level: { type: Number },
         save_dc: { type: Number },
@@ -184,7 +185,127 @@ const characterSchema = new mongoose.Schema({
         },
           effect: { type: String }
         }
-      ]
+      ],
+      spells: [{
+        name: { type: String },
+        description: { type: String },
+        level: { type: Number },
+        school: { type: String },
+        casting_time: { type: String },
+        range: { type: String },
+        area: { type: String },
+        components: { type: String },
+        duration: { type: String },
+        prepared: { type: Boolean, default: false },
+      }],
+      inventory: {
+        items: [
+          {
+            name: { type: String, required: true },
+            category: { 
+              type: String, 
+              enum: ["Weapon", "Armor", "Consumable", "Tool", "Magic Item", "Misc", "Custom"], 
+              required: true 
+            },
+            quantity: { type: Number, default: 1 },
+            weight: { type: Number, default: 0 },
+            equipped: { type: Boolean, default: false },
+            attunement: { type: Boolean, default: false },
+            attuned: { type: Boolean, default: false },
+            rarity: { 
+              type: String, 
+              enum: ["Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact"], 
+              default: "Common" 
+            },
+            properties: { type: [String], default: [] },
+            description: { type: String },
+            damage: { type: String },
+            damage_type: { type: String },
+            range: { type: String },
+            ac_bonus: { type: Number, default: 0 },
+            armor_type: { type: String, enum: ["Light", "Medium", "Heavy", "Shield"] },
+            effect: { type: String },
+          }
+        ],
+        currency: {
+          gold: { type: Number, default: 0 },
+          silver: { type: Number, default: 0 },
+          copper: { type: Number, default: 0 },
+          platinum: { type: Number, default: 0 },
+        },
+        total_weight: { type: Number, default: 0 } 
+      },
+      features: {
+        class_features:[{
+          name: { type: String, required: true },
+          description: { type: String, required: true }, 
+          level_requirement: { type: Number }, 
+          uses: { type: Number, default: null },
+          recharge: { 
+            type: String, 
+            enum: ["Short Rest", "Long Rest", "Per Day", "None"], 
+            default: "None" 
+          },
+          activation: { 
+            type: String, 
+            enum: ["Passive", "Action", "Bonus Action", "Reaction"], 
+            default: "Passive" 
+          }
+        }],
+        species_traits:[{
+          name: { type: String },
+          description: { type: String },
+        }],
+        feats:[{
+          name: { type: String },
+          description: { type: String },
+          uses: { type: Number, default: null },
+          recharge: { 
+            type: String, 
+            enum: ["Short Rest", "Long Rest", "Per Day", "None"], 
+            default: "None" 
+          },
+          activation: { 
+            type: String, 
+            enum: ["Passive", "Action", "Bonus Action", "Reaction"], 
+            default: "Passive" 
+          }
+        }]
+      },
+      background: {
+        background: {
+          name: { type: String },
+          description: { type: String },
+          ability_scores: { type: [String] },
+          skill_proficiencies: { type: [String] },
+          feat: { type: String }
+        },
+        characteristics: {
+          alignment: { type: String },
+          gender: { type: String },
+          eyes: { type: String },
+          size: { type: String },
+          height: { type: String },
+          faith: { type: String },
+          hair: { type: String },
+          skin: { type: String },
+          age: { type: String },
+          weight: { type: String },
+          personality_traits: { type: [String] },
+          ideals: { type: [String] },
+          bonds: { type: [String] },
+          flaws: { type: [String] },
+        },
+        appearance: { type: String }
+      },
+      notes: {
+        organizations: { type: String },
+        allies: { type: String },
+        enemies: { type: String },
+        backstory: { type: String },
+        other: { type: String },
+      },
+      extras: { type: String }
 })
 
 const Character = mongoose.model("Character", characterSchema)

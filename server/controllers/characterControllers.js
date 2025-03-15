@@ -1,6 +1,5 @@
 const User = require('../models/userModel')
 const Character = require('../models/characterModel')
-const jwt = require('jsonwebtoken')
 
 // Get Characters from User
 const getAllCharacters = async (req, res) => {
@@ -24,6 +23,22 @@ const getAllCharacters = async (req, res) => {
     }
 }
 // Get a Single Character
+const getSingleCharacter = async (req, res) => {
+    try {
+        const userId = req.user._id
+        const characterId = req.params._id
+
+        const character = await Character.findById({ _id: characterId, user: userId })
+
+        if(!character) {
+            res.status(400).json("Character does not exist")
+        }
+        res.status(200).json(character)
+    } catch (error) {
+        res.status(400).json({ error: error.message})
+    }
+
+}
 // Create a Character
 const createCharacter = async (req, res) => {
     const userId = req.user._id
@@ -97,7 +112,13 @@ const createCharacter = async (req, res) => {
             actions: req.body.actions,
             bonus_actions: req.body.actions,
             reactions: req.body.reactions,
-            other_abilities: req.body.other_abilities
+            other_abilities: req.body.other_abilities,
+            spells: req.body.spells,
+            inventory: req.body.inventory,
+            features: req.body.features,
+            background: req.body.background,
+            notes: req.body.notes,
+            extras: req.body.extras
         })
 
         const savedCharacter = await character.save();
@@ -110,9 +131,44 @@ const createCharacter = async (req, res) => {
     }
 }
 // Delete a Character
+const deleteCharacter = async (req,res) => {
+    const { id } = req.params.id
+    try {
+        const userId = req.user._id
+        const character = await Character.findByIdAndDelete({_id:id})
+        const user = await User.findById(userId)
+
+        user.characters.pull(character)
+        await user.save()
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
 // Update a Character
+const updateCharacter = async (req,res) => {
+    const { id } = req.params
+    try {
+        if(!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({error: "That character does not exist"})
+        }
+
+        const character = await Character.findOneAndUpdate({_id: id}, {...req.body})
+
+        if(!character) {
+            return res.status(400).json({error: "Character could not be found"})
+        }
+
+        res.status(200).json(character)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
 
 module.exports = {
     getAllCharacters,
-    createCharacter
+    getSingleCharacter,
+    createCharacter,
+    deleteCharacter,
+    updateCharacter
 }
