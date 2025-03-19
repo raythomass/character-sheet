@@ -110,7 +110,7 @@ const createCharacter = async (req, res) => {
                 survival: { proficiency_level: 0, modifier: 0 },
             },
             actions: req.body.actions,
-            bonus_actions: req.body.actions,
+            bonus_actions: req.body.bonus_actions,
             reactions: req.body.reactions,
             other_abilities: req.body.other_abilities,
             spells: req.body.spells,
