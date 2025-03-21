@@ -1,6 +1,12 @@
 const Navbar = () => {
     return (
-        <h1>Navbar</h1>
+        <div className="nav-container flex justify-between">
+            <h5 className="">Character Sheet App</h5>
+            <div className="nav-options flex gap-8">
+                <p>Sign Up</p>
+                <p>Login</p>
+            </div>
+        </div>
     )
 }
 
