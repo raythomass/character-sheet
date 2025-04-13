@@ -1,12 +1,13 @@
 const User = require('../models/userModel')
-const Character = require('../models/characterModel')
+const Sheet = require('../models/sheetModel')
+const mongoose = require('mongoose')
 
 // Get Characters from User
 const getAllCharacters = async (req, res) => {
     const userId = req.user._id
 
     try {
-        const user = await User.findById(userId).populate('characters')
+        const user = await User.findById(userId).populate('sheets')
 
         if(!user) {
             return res.status(404).json({ success: false, message: 'User not found.' }); 
@@ -15,8 +16,8 @@ const getAllCharacters = async (req, res) => {
         res.status(200).json({
             success: true,
             userId: userId,
-            count: user.characters.length,
-            data: user.characters
+            count: user.sheets.length,
+            data: user.sheets
         })
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -26,14 +27,14 @@ const getAllCharacters = async (req, res) => {
 const getSingleCharacter = async (req, res) => {
     try {
         const userId = req.user._id
-        const characterId = req.params._id
+        const sheetId = req.params._id
 
-        const character = await Character.findById({ _id: characterId, user: userId })
+        const sheet = await Sheet.findById({ _id: sheetId, user: userId })
 
-        if(!character) {
+        if(!sheet) {
             res.status(400).json("Character does not exist")
         }
-        res.status(200).json(character)
+        res.status(200).json(sheet)
     } catch (error) {
         res.status(400).json({ error: error.message})
     }
@@ -44,7 +45,7 @@ const createCharacter = async (req, res) => {
     const userId = req.user._id
 
     try {
-        const character = new Character({
+        const sheet = new Sheet({
             user: userId,
             character_name: req.body.character_name,
             species: req.body.species,
@@ -121,11 +122,11 @@ const createCharacter = async (req, res) => {
             extras: req.body.extras
         })
 
-        const savedCharacter = await character.save();
+        const savedSheet = await sheet.save();
 
-        await User.findByIdAndUpdate(userId, { $push: { characters: savedCharacter._id } });
+        await User.findByIdAndUpdate(userId, { $push: { sheets: sheet._id } });
 
-        res.status(201).json(savedCharacter);
+        res.status(201).json(savedSheet);
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -135,10 +136,10 @@ const deleteCharacter = async (req,res) => {
     const { id } = req.params.id
     try {
         const userId = req.user._id
-        const character = await Character.findByIdAndDelete({_id:id})
+        const sheet = await Sheet.findByIdAndDelete({_id:id})
         const user = await User.findById(userId)
 
-        user.characters.pull(character)
+        user.sheets.pull(sheet)
         await user.save()
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -152,13 +153,13 @@ const updateCharacter = async (req,res) => {
             return res.status(400).json({error: "That character does not exist"})
         }
 
-        const character = await Character.findOneAndUpdate({_id: id}, {...req.body})
+        const sheet = await Sheet.findOneAndUpdate({_id: id}, {...req.body})
 
-        if(!character) {
-            return res.status(400).json({error: "Character could not be found"})
+        if(!sheet) {
+            return res.status(400).json({error: "Character Sheet could not be found"})
         }
 
-        res.status(200).json(character)
+        res.status(200).json(sheet)
     } catch (error) {
         res.status(400).json({error: error.message})
     }
