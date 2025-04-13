@@ -11,9 +11,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    characters: [{
+    sheets: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Character'
+        ref: 'Sheet'
     }]
 })
 

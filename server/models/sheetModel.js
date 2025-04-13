@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const characterSchema = new mongoose.Schema({
+const sheetSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -308,6 +308,6 @@ const characterSchema = new mongoose.Schema({
       extras: { type: String }
 })
 
-const Character = mongoose.model("Character", characterSchema)
+const Sheet = mongoose.model("Sheet", sheetSchema)
 
-module.exports = Character
+module.exports = Sheet
