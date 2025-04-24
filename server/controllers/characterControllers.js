@@ -25,14 +25,18 @@ const getAllCharacters = async (req, res) => {
 }
 // Get a Single Character
 const getSingleCharacter = async (req, res) => {
-    try {
-        const userId = req.user._id
-        const sheetId = req.params._id
+    const userId = req.user._id
+    const { id } = req.params
 
-        const sheet = await Sheet.findById({ _id: sheetId, user: userId })
+    try {
+        if(!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({error: "That character does not exist"})
+        }
+
+        const sheet = await Sheet.findById({ _id: id, user: userId })
 
         if(!sheet) {
-            res.status(400).json("Character does not exist")
+            res.status(400).json("Character could not be found")
         }
         res.status(200).json(sheet)
     } catch (error) {
@@ -133,14 +137,15 @@ const createCharacter = async (req, res) => {
 }
 // Delete a Character
 const deleteCharacter = async (req,res) => {
-    const { id } = req.params.id
+    const { id } = req.params
     try {
         const userId = req.user._id
-        const sheet = await Sheet.findByIdAndDelete({_id:id})
+        const sheet = await Sheet.findOneAndDelete({_id:id})
         const user = await User.findById(userId)
 
-        user.sheets.pull(sheet)
+        user.sheets.pull(id)
         await user.save()
+        res.status(200).json(sheet)
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -153,7 +158,11 @@ const updateCharacter = async (req,res) => {
             return res.status(400).json({error: "That character does not exist"})
         }
 
-        const sheet = await Sheet.findOneAndUpdate({_id: id}, {...req.body})
+        const sheet = await Sheet.findOneAndUpdate(
+            {_id: id},
+            {...req.body},
+            { new: true, runValidators: true}
+        )
 
         if(!sheet) {
             return res.status(400).json({error: "Character Sheet could not be found"})
