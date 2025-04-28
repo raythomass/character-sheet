@@ -8,7 +8,7 @@ export const useGetAllCharacters = () => {
     const { user } = useAuthContext()
 
     useEffect(() => {
-        const fetchSheets = async () => {
+        const fetchAllSheets = async () => {
             if (!user) return
 
             try {
@@ -28,10 +28,10 @@ export const useGetAllCharacters = () => {
                     dispatch({type: 'SET_SHEET', payload: json})
                 }
             } catch (error) {
-                toast.error("Network error or server unavailable");
+                toast.error(error);
             }
         }
-        fetchSheets()
+        fetchAllSheets()
     }, [user, dispatch])
 }
 
