@@ -1,13 +1,19 @@
-const Navbar = () => {
+import { Link } from "react-router-dom"
+
+export const Navbar = () => {
     return (
         <div className="nav-container flex justify-between">
-            <h5 className="">Character Sheet App</h5>
+            <Link to={'/'}>
+                <h5 className="">Character Sheet App</h5>
+            </Link>
             <div className="nav-options flex gap-8">
-                <p>Sign Up</p>
-                <p>Login</p>
+                <Link to={'/signup'}>
+                    <p>Sign Up</p>
+                </Link>
+                <Link to={'/login'}>
+                    <p>Login</p>
+                </Link>
             </div>
         </div>
     )
 }
-
-export default Navbar
