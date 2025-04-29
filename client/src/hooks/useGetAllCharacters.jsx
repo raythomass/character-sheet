@@ -25,7 +25,7 @@ export const useGetAllCharacters = () => {
                 }
                 
                 if(response.ok) {
-                    dispatch({type: 'SET_SHEET', payload: json})
+                    dispatch({type:'SET_SHEET', payload: json})
                 }
             } catch (error) {
                 toast.error(error);

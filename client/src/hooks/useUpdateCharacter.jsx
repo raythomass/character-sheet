@@ -26,7 +26,7 @@ export const useUpdateCharacter = () => {
                 }
                 if(response.ok) {
                     toast.success('Character Created')
-                    dispatch({type:'CREATE_SHEET', payload:json})
+                    dispatch({type:'UPDATE_SHEET', payload:json})
                 }
             } catch (error) {
                 toast.error(error)
