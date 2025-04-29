@@ -24,7 +24,7 @@ export const useDeleteCharacter = () => {
                 }
                 if(response.ok) {
                     toast.success('Character Created')
-                    dispatch({type:'CREATE_SHEET', payload:json})
+                    dispatch({type:'DELETE_SHEET', payload:json})
                 }
             } catch (error) {
                 toast.error(error)
