@@ -8,9 +8,11 @@ const sheetSchema = new mongoose.Schema({
     },
     character_name: { type: String },
     species: { type: String },
-    class: { type: String },
-    level: { type: Number, default: 1 },
-
+    class: [{
+      class_name: { type: String },
+      subclass: { type: String },
+      level: { type: Number, default: 1 },
+    }],
     stats: {
         strength: { type: Number, default: 10 },
         dexterity: { type: Number, default: 10 },

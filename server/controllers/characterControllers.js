@@ -54,7 +54,6 @@ const createCharacter = async (req, res) => {
             character_name: req.body.character_name,
             species: req.body.species,
             class: req.body.class,
-            level: req.body.level,
             stats: req.body.stats || {
                 strength: 10,
                 dexterity: 10,
