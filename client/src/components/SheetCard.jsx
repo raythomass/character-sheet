@@ -3,15 +3,9 @@ export const SheetCard = ({sheet}) => {
         <div>
             <h5>{sheet.character_name}</h5>
             <p>{sheet.species}</p>
-            <p>{sheet.class}</p>
-            <ul className="flex gap-10">
-                <li>{sheet.stats.strength}</li>
-                <li>{sheet.stats.dexterity}</li>
-                <li>{sheet.stats.constitution}</li>
-                <li>{sheet.stats.intelligence}</li>
-                <li>{sheet.stats.wisdom}</li>
-                <li>{sheet.stats.charisma}</li>
-            </ul>
+            { sheet.class && sheet.class.map((char) => (
+                <p>{char.class_name} {char.subclass} {char.level}</p>
+            ))}
         </div>
     )
 }
