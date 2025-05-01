@@ -19,7 +19,6 @@ export const useGetAllCharacters = () => {
                 })
 
                 const json = await response.json()
-                console.log(json.data)
 
                 if(!response.ok) {
                     toast.error(json.error || "Something went wrong");

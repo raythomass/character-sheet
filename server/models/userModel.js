@@ -44,7 +44,7 @@ userSchema.statics.login = async function (username, password) {
     
     const user = await this.findOne({username})
 
-    if(!username) {
+    if(!user) {
         throw Error('User not found')
     }
 
