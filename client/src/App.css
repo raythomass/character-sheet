@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-    --red: #B91327;
-    --gold: #FF9F1C;
-    --green: #43604E;
+    --crimson: #B91327;
+    --golden: #FF9F1C;
+    --forest: #43604E;
     --platinum: #F5F5F5;
     --black: #262626;
     --grey: #D6D6D6;
@@ -65,7 +65,7 @@ small {
 /* ------------- */
 /* Signup Styles */
 /* ------------- */
-.signup {
+.auth {
     /* border: 1px solid red; */
     margin-left: 8rem;
     margin-right: 8rem;
@@ -75,31 +75,45 @@ small {
     /* align-items: center; */
 }
 
-.signup h3 {
+.auth h3 {
     font-family: "Caudex", serif;
     font-weight: 700;
-}
-.signup-username input {
-    border: 1px solid var(--grey);
-    margin-bottom: 1rem;
-    height: 2rem;
-    border-radius: 5px;
+    margin-bottom: 2rem;
 }
 
-.signup-password input {
-    border: 1px solid var(--grey);
+.auth-username {
     margin-bottom: 1rem;
-    height: 2rem;
-    border-radius: 5px;
 }
 
-.signup-button-div button {
+.auth-password {
+    margin-bottom: 2rem;
+}
+
+.auth-username input {
+    border: 1px solid var(--grey);
+    height: 2.5rem;
+    border-radius: 5px;
+    padding: 0.75rem;
+}
+
+.auth-password input {
+    border: 1px solid var(--grey);
+    height: 2.5rem;
+    border-radius: 5px;
+    padding: 0.75rem;
+}
+
+.auth-button-div button {
     padding-left: 5rem;
     padding-right: 5rem;
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
-    background-color: var(--red);
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    background-color: var(--crimson);
     color: var(--platinum);
     border-radius: 5px;
+}
+
+.error small {
+    color: #ff443a ;
 }
 

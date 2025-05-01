@@ -12,23 +12,24 @@ export const useGetAllCharacters = () => {
             if (!user) return
 
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_KEY}/api/character`, {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/character`, {
                     headers: {
                         'Authorization': `Bearer ${user.token}`
                       }
                 })
 
                 const json = await response.json()
+                console.log(json.data)
 
                 if(!response.ok) {
                     toast.error(json.error || "Something went wrong");
                 }
                 
                 if(response.ok) {
-                    dispatch({type:'SET_SHEET', payload: json})
+                    dispatch({type:'SET_SHEET', payload: json.data})
                 }
             } catch (error) {
-                toast.error(error);
+                toast.error(error.message);
             }
         }
         fetchAllSheets()
