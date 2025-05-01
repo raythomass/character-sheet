@@ -43,6 +43,10 @@ small {
     font-size: 0.694rem ;
 } 
 
+button {
+    cursor: pointer;
+}
+
 
 
 /* ------------- */

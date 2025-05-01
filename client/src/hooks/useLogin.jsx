@@ -22,7 +22,7 @@ export const useLogin = () => {
 
             if(!response.ok) {
                 setIsLoading(false)
-                setError(json.error || "Something went wrong");
+                setError(json.error);
                 toast.error(json.error);
             }
 

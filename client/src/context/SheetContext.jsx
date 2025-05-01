@@ -45,7 +45,7 @@ export const SheetContextProvider = ({ children }) => {
         sheets: []
     })
 
-    console.log('SheetContext state: ', state)
+    // console.log('SheetContext state: ', state)
 
     return (
         <SheetContext.Provider value={{...state, dispatch}}>

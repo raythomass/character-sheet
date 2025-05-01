@@ -27,11 +27,6 @@ export const Login = () => {
                         onChange={(e) => setUsername(e.target.value)}
                         value={username}
                     />
-                    {error &&
-                        <div className='error'>
-                            <small className="">{error}</small>
-                        </div>
-                    }
                 </div>
                 <div className="auth-password flex flex-col">
                     <label>Password</label>
@@ -42,6 +37,11 @@ export const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                     />
+                    {error &&
+                        <div className='error'>
+                            <small className="">{error}</small>
+                        </div>
+                    }
                 </div> 
                 <div className="auth-button-div flex justify-center">
                     <button disabled={isloading}>Log in</button>
