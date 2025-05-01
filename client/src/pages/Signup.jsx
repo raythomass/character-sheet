@@ -12,35 +12,40 @@ export const Signup = () => {
     }
 
     return(
-        // <div className="signup flex flex-col">
-        //     <div className="flex justify-center">
-        //         <h3>Create a new account</h3>
-        //     </div>
-        // </div>
-        <form className="signup-form flex flex-col justify-center" onSubmit={handleSubmit}>
-                <div className="signup-username flex flex-col">
+        <div className="auth flex flex-col">
+            <div className="flex justify-center">
+                <h3>Create a new account</h3>
+            </div>
+            <form className="auth-form flex flex-col justify-center" onSubmit={handleSubmit}>
+                <div className="auth-username flex flex-col">
                     <label>Username</label>
                     <input
                         type="text"
                         name="username"
+                        className="focus:outline-(--crimson)"
                         onChange={(e) => setUsername(e.target.value)}
                         value={username}
                     />
+                    {error &&
+                        <div className='error'>
+                            <small className="">{error}</small>
+                        </div>
+                    }
                 </div>
-                <div className="signup-password flex flex-col">
+                <div className="auth-password flex flex-col">
                     <label>Password</label>
                     <input
                         type="password"
                         name="password"
-                        className="signup-password-input"
+                        className="focus:outline-(--crimson)"
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                     />
                 </div> 
-                <div className="signup-button-div flex justify-center">
-                    <button disabled={isLoading} >Sign Up</button>
+                <div className="auth-button-div flex justify-center">
+                    <button disabled={isLoading}>Sign Up</button>
                 </div> 
-                {error ?? <div className='error'>{error}</div>}
             </form>
+        </div>
     )
 }

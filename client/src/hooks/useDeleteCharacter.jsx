@@ -27,7 +27,7 @@ export const useDeleteCharacter = () => {
                     dispatch({type:'DELETE_SHEET', payload:json})
                 }
             } catch (error) {
-                toast.error(error)
+                toast.error(error.message)
             }
         }
         deleteCharacter()

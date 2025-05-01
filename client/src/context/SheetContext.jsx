@@ -42,8 +42,10 @@ export const sheetReducer = ( state, action ) => {
 
 export const SheetContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(sheetReducer, {
-        sheets: null
+        sheets: []
     })
+
+    console.log('SheetContext state: ', state)
 
     return (
         <SheetContext.Provider value={{...state, dispatch}}>

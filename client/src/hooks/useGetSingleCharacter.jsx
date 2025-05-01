@@ -22,7 +22,7 @@ export const useGetSingleCharacter = (id) => {
                     dispatch({type: 'SET_CURRENT_SHEET', payload: json})
                 }
             } catch (error) {
-                toast.error(error)
+                toast.error(error.message)
             }
         }
         fetchSingleSheet()

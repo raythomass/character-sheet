@@ -12,7 +12,7 @@ export const useLogin = () => {
         setError(null)
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/login`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/login`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({username, password})
@@ -23,7 +23,7 @@ export const useLogin = () => {
             if(!response.ok) {
                 setIsLoading(false)
                 setError(json.error || "Something went wrong");
-                toast.error(json.error || "Something went wrong");
+                toast.error(json.error);
             }
 
             if(response.ok) {

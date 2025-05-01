@@ -29,7 +29,7 @@ export const useUpdateCharacter = () => {
                     dispatch({type:'UPDATE_SHEET', payload:json})
                 }
             } catch (error) {
-                toast.error(error)
+                toast.error(error.message)
             }
         }
         updateCharacter()
