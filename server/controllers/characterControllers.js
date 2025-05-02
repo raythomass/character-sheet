@@ -52,6 +52,7 @@ const createCharacter = async (req, res) => {
         const sheet = new Sheet({
             user: userId,
             character_name: req.body.character_name,
+            campaign: req.body.campaign,
             species: req.body.species,
             class: req.body.class,
             stats: req.body.stats || {
