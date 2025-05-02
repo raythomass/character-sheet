@@ -7,6 +7,7 @@ const sheetSchema = new mongoose.Schema({
         required: true
     },
     character_name: { type: String },
+    campaign: { type: String },
     species: { type: String },
     class: [{
       class_name: { type: String },
