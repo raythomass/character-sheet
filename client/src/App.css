@@ -139,3 +139,27 @@ button {
 .sheet-card-options {
     border-top: 1px solid var(--grey);
 }
+
+
+
+
+/* ------------- */
+/* Character Sheet Styles */
+/* ------------- */
+.character-sheet h2 {
+    font-family: "Caudex", serif;
+    font-weight: 600;
+}
+
+.character-sheet h3 {
+    font-family: "Caudex", serif;
+    font-weight: 600;
+}
+
+.character-sheets-stats div {
+    width: 15%;
+    padding: 0.5rem;
+    background-color: var(--grey);
+    color: var(--black);
+    border-radius: 5px;
+}
