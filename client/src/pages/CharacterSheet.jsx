@@ -16,8 +16,16 @@ export const CharacterSheet = () => {
 
     return (
         <div className="character-sheet">
-            <h3 className="text-center">{currentSheet.character_name}</h3>
-            <div className="character-sheets-stats flex justify-around mt-4 ml-14 mr-14">
+            <div className="character-titles flex flex-col mt-6">
+                <h3 className="">{currentSheet.character_name}</h3>
+                <div className="flex gap-6">
+                    <small>{currentSheet.species}</small>
+                    {currentSheet.class && currentSheet.class.map((classes) => (
+                            <small>{classes.class_name} {classes.subclass} {classes.level}</small>
+                    ))}
+                </div>
+            </div>
+            <div className="character-sheets-stats flex justify-around mt-4">
                 <div className="flex flex-col text-center">
                     <small>Strength</small>
                     <h2>{currentSheet.stats.strength}</h2>

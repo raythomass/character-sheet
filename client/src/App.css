@@ -146,6 +146,11 @@ button {
 /* ------------- */
 /* Character Sheet Styles */
 /* ------------- */
+.character-sheet {
+    margin-left: 3rem ;
+    margin-right: 3rem ;
+}
+
 .character-sheet h2 {
     font-family: "Caudex", serif;
     font-weight: 600;
