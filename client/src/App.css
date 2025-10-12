@@ -62,7 +62,7 @@ button {
 }
 
 .nav-options {
-    font-family: "Figtree", sans-serif;
+    font-family: "Outfit", sans-serif;
 }
 
 
@@ -159,6 +159,10 @@ button {
 .character-sheet h3 {
     font-family: "Caudex", serif;
     font-weight: 600;
+}
+
+.character-sheets-stats {
+    /* border: 1px solid red; */
 }
 
 .character-sheets-stats div {
