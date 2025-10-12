@@ -21,32 +21,32 @@ export const CharacterSheet = () => {
                 <div className="flex gap-6">
                     <small>{currentSheet.species}</small>
                     {currentSheet.class && currentSheet.class.map((classes) => (
-                            <small>{classes.class_name} {classes.subclass} {classes.level}</small>
+                            <small>{classes.class_name} {classes.level}</small>
                     ))}
                 </div>
             </div>
-            <div className="character-sheets-stats flex justify-around mt-4">
-                <div className="flex flex-col text-center">
+            <div className="character-sheets-stats flex justify-between mt-4">
+                <div className="flex flex-col justify-center items-center">
                     <small>Strength</small>
                     <h2>{currentSheet.stats.strength}</h2>
                 </div>
-                <div className="flex flex-col text-center">
+                <div className="flex flex-col justify-center items-center">
                     <small>Dexterity</small>
                     <h2>{currentSheet.stats.dexterity}</h2>
                 </div>
-                <div className="flex flex-col text-center">
+                <div className="flex flex-col justify-center items-center">
                     <small>Constitution</small>
                     <h2>{currentSheet.stats.constitution}</h2>
                 </div>
-                <div className="flex flex-col text-center">
+                <div className="flex flex-col justify-center items-center">
                     <small>Intelligence</small>
                     <h2>{currentSheet.stats.intelligence}</h2>
                 </div>
-                <div className="flex flex-col text-center">
+                <div className="flex flex-col justify-center items-center">
                     <small>Wisdom</small>
                     <h2>{currentSheet.stats.wisdom}</h2>
                 </div>
-                <div className="flex flex-col text-center">
+                <div className="flex flex-col justify-center items-center">
                     <small>Charisma</small>
                     <h2>{currentSheet.stats.charisma}</h2>
                 </div>
