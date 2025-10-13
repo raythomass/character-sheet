@@ -9,13 +9,14 @@ export const Home = () => {
     useGetAllCharacters()
     
     return(
+
         <div className='home'>
-            <h1>Home Page</h1>
+            <h1>My Characters</h1>
+            <div className='home-card-container flex flex-wrap gap-10'>
             {sheets && sheets.map((sheet) => (
-                <div className='sheet-card-container mt-6'>
-                    <SheetCard key={sheet._id} sheet={sheet}/>
-                </div>
+                <SheetCard key={sheet._id} sheet={sheet}/>
             ))}
+            </div>
         </div>
     )
 }

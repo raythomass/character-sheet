@@ -133,11 +133,22 @@ button {
 .sheet-card {
     border: 1px solid var(--grey);
     border-radius: 5px;
-    max-width: 25%;
+    width: 30%;
 }
 
 .sheet-card-options {
     border-top: 1px solid var(--grey);
+}
+
+
+
+
+
+/* ------------- */
+/* Character Sheet Styles */
+/* ------------- */
+.home-card-container {
+    max-width: 100%;
 }
 
 
