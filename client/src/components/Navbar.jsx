@@ -13,7 +13,7 @@ export const Navbar = () => {
     return (
         <div className="nav-container flex justify-between">
             <Link to={'/'}>
-                <h5 className="">Character Sheet App</h5>
+                <h5 className="">DND Sheets</h5>
             </Link>
             { user && 
                 <div className="nav-user flex gap-8">
