@@ -8,11 +8,19 @@ export const CharacterSheet = () => {
     const { currentSheet } = useSheetContext()
     const { user } = useAuthContext()
 
-    useGetSingleCharacter(id)
+    const { loading, error } = useGetSingleCharacter(id);
 
-    if (!currentSheet) {
-        return <h5 className="mt-16 text-center">You do not have access to this character</h5>
-    }
+  if (loading) {
+    return <h5 className="mt-16 text-center">Loading character sheet...</h5>;
+  }
+
+  if (error) {
+    return <h5 className="mt-16 text-center text-red-500">{error}</h5>;
+  }
+
+  if (!user) {
+    return <h5 className="mt-16 text-center">You do not have access to this character.</h5>;
+  }
 
     return (
         <div className="character-sheet">
