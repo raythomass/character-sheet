@@ -69,6 +69,19 @@ button {
 
 
 
+
+/* ------------- */
+/* Home Styles */
+/* ------------- */
+.home {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+
+
+
 /* ------------- */
 /* Signup Styles */
 /* ------------- */
@@ -144,22 +157,13 @@ button {
 
 
 
-/* ------------- */
-/* Character Sheet Styles */
-/* ------------- */
-.home-card-container {
-    max-width: 100%;
-}
-
-
-
 
 /* ------------- */
 /* Character Sheet Styles */
 /* ------------- */
 .character-sheet {
-    margin-left: 3rem ;
-    margin-right: 3rem ;
+    margin-left: 20% ;
+    margin-right: 20% ;
 }
 
 .character-sheet h2 {
@@ -176,10 +180,21 @@ button {
     /* border: 1px solid red; */
 }
 
-.character-sheets-stats div {
+.stats{
     width: 15%;
     padding: 0.5rem;
     background-color: var(--grey);
     color: var(--black);
     border-radius: 5px;
+}
+
+.stat-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--platinum);
+    border: 2px solid var(--black);
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
 }
