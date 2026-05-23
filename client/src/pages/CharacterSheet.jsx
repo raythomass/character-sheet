@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useSheetContext } from "../hooks/useSheetContext"
 import { useGetSingleCharacter } from '../hooks/useGetSingleCharacter'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShield } from '@fortawesome/free-solid-svg-icons'
 
 export const CharacterSheet = () => {
     const { id } = useParams()
@@ -26,13 +28,27 @@ export const CharacterSheet = () => {
 
     return (
         <div className="character-sheet">
-            <div className="character-titles flex flex-col mt-6">
-                <h3 className="">{currentSheet.character_name}</h3>
-                <div className="flex gap-6">
-                    <small>{currentSheet.species}</small>
-                    {currentSheet.class && currentSheet.class.map((classes) => (
-                            <small>{classes.class_name} {classes.level}</small>
-                    ))}
+            <div className="character-titles flex justify-between mt-6">
+                <div className="character-ac-div flex flex-col items-center">
+                    <small>Armor Class</small>
+                    <h2>{currentSheet.armor_class}</h2>
+                </div>
+                <div className="character-name-div flex flex-col items-center">
+                    <div className="character-name">
+                        <h2>{currentSheet.character_name}</h2>
+                    </div>
+                    <div className="character-classes">
+                        {currentSheet.class && currentSheet.class.map((classes) => (
+                            <small>{classes.class_name} ({classes.subclass}) {classes.level} </small>
+                        ))}
+                    </div>
+                </div>
+                <div className="character-health-div flex flex-col items-center">
+                    <small className="">Health</small>
+                    <div className="flex gap-4">
+                        <h4 className="character-temp-health text-zinc-400">{currentSheet.health.temp}</h4>
+                        <h4 className>{currentSheet.health.current} / {currentSheet.health.max}</h4>
+                    </div>
                 </div>
             </div>
             <div className="character-sheets-stats flex justify-between mt-4">
