@@ -54,45 +54,71 @@ export const CharacterSheet = () => {
             <div className="character-sheets-stats flex justify-between mt-4">
                 <div className="stats flex flex-col justify-center items-center">
                     <small>Strength</small>
-                    <h2>{getModifier(currentSheet.stats.strength)}</h2>
+                    <h2>+{getModifier(currentSheet.stats.strength)}</h2>
                     <div className="stat-div">
                         <p>{currentSheet.stats.strength}</p>
                     </div>
                 </div>
                 <div className="stats flex flex-col justify-center items-center">
                     <small>Dexterity</small>
-                    <h2>{getModifier(currentSheet.stats.dexterity)}</h2>
+                    <h2>+{getModifier(currentSheet.stats.dexterity)}</h2>
                     <div className="stat-div">
                         <p>{currentSheet.stats.dexterity}</p>
                     </div>
                 </div>
                 <div className="stats flex flex-col justify-center items-center">
                     <small>Constitution</small>
-                    <h2>{getModifier(currentSheet.stats.constitution)}</h2>
+                    <h2>+{getModifier(currentSheet.stats.constitution)}</h2>
                     <div className="stat-div">
                         <p>{currentSheet.stats.constitution}</p>
                     </div>
                 </div>
                 <div className="stats flex flex-col justify-center items-center">
                     <small>Intelligence</small>
-                    <h2>{getModifier(currentSheet.stats.intelligence)}</h2>
+                    <h2>+{getModifier(currentSheet.stats.intelligence)}</h2>
                     <div className="stat-div">
                         <p>{currentSheet.stats.intelligence}</p>
                     </div>
                 </div>
                 <div className="stats flex flex-col justify-center items-center">
                     <small>Wisdom</small>
-                    <h2>{getModifier(currentSheet.stats.wisdom)}</h2>
+                    <h2>+{getModifier(currentSheet.stats.wisdom)}</h2>
                     <div className="stat-div">
                         <p>{currentSheet.stats.wisdom}</p>
                     </div>
                 </div>
                 <div className="stats flex flex-col justify-center items-center">
                     <small>Charisma</small>
-                    <h2>{getModifier(currentSheet.stats.charisma)}</h2>
+                    <h2>+{getModifier(currentSheet.stats.charisma)}</h2>
                     <div className="stat-div">
                         <p>{currentSheet.stats.charisma}</p>
                     </div>
+                </div>
+            </div>
+            <div className="character-sheet-savingthrows flex justify-between mt-4">
+                <div className="savingthrow flex flex-col items-center">
+                    <small>Strength</small>
+                    <h5>+{currentSheet.saving_throws.strength.value}</h5>
+                </div>
+                <div className="savingthrow flex flex-col items-center">
+                    <small>Dexterity</small>
+                    <h5>+{currentSheet.saving_throws.dexterity.value}</h5>
+                </div>
+                <div className="savingthrow flex flex-col items-center">
+                    <small>Constitution</small>
+                    <h5>+{currentSheet.saving_throws.constitution.value}</h5>
+                </div>
+                <div className="savingthrow flex flex-col items-center">
+                    <small>Intelligence</small>
+                    <h5>+{currentSheet.saving_throws.intelligence.value}</h5>
+                </div>
+                <div className="savingthrow flex flex-col items-center">
+                    <small>Wisdom</small>
+                    <h5>+{currentSheet.saving_throws.wisdom.value}</h5>
+                </div>
+                <div className="savingthrow flex flex-col items-center">
+                    <small>Charisma</small>
+                    <h5>+{currentSheet.saving_throws.charisma.value}</h5>
                 </div>
             </div>
         </div>
