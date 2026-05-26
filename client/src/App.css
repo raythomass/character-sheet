@@ -199,6 +199,14 @@ button {
     width: 2rem;
 }
 
+.savingthrow{
+    width: 15%;
+    padding: 0.5rem;
+    background-color: var(--grey);
+    color: var(--black);
+    border-radius: 5px;
+}
+
 .character-health {
     background-color: var(--grey);
 }
