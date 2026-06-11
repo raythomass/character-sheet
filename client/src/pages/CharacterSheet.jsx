@@ -4,6 +4,11 @@ import { useSheetContext } from "../hooks/useSheetContext"
 import { useGetSingleCharacter } from '../hooks/useGetSingleCharacter'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShield } from '@fortawesome/free-solid-svg-icons'
+import Stats from "../components/Stats"
+import ArmorClass from "../components/ArmorClass"
+import CharacterDetails from "../components/CharacterDetails"
+import Health from "../components/Health"
+import Skills from "../components/Skills"
 
 export const CharacterSheet = () => {
     const { id } = useParams()
@@ -28,99 +33,20 @@ export const CharacterSheet = () => {
 
     return (
         <div className="character-sheet">
-            <div className="character-titles flex justify-between mt-6">
-                <div className="character-ac-div flex flex-col items-center">
-                    <small>Armor Class</small>
-                    <h2>{currentSheet.armor_class}</h2>
-                </div>
-                <div className="character-name-div flex flex-col items-center">
-                    <div className="character-name">
-                        <h2>{currentSheet.character_name}</h2>
-                    </div>
-                    <div className="character-classes">
-                        {currentSheet.class && currentSheet.class.map((classes) => (
-                            <small>{classes.class_name} ({classes.subclass}) {classes.level} </small>
-                        ))}
-                    </div>
-                </div>
-                <div className="character-health-div flex flex-col items-center">
-                    <small className="">Health</small>
-                    <div className="flex gap-4">
-                        <h4 className="character-temp-health text-zinc-400">{currentSheet.health.temp}</h4>
-                        <h4 className>{currentSheet.health.current} / {currentSheet.health.max}</h4>
-                    </div>
-                </div>
+            <div className="character-titles flex justify-between mt-6 items-center">
+                <ArmorClass ac={currentSheet.armor_class}/>
+                <CharacterDetails 
+                    name = {currentSheet.character_name}
+                    characterClass = {currentSheet.class}
+                    species = {currentSheet.species}
+                />
+                <Health health = {currentSheet.health}/>
             </div>
-            <div className="character-sheets-stats flex justify-between mt-4">
-                <div className="stats flex flex-col justify-center items-center">
-                    <small>Strength</small>
-                    <h2>+{getModifier(currentSheet.stats.strength)}</h2>
-                    <div className="stat-div">
-                        <p>{currentSheet.stats.strength}</p>
-                    </div>
-                </div>
-                <div className="stats flex flex-col justify-center items-center">
-                    <small>Dexterity</small>
-                    <h2>+{getModifier(currentSheet.stats.dexterity)}</h2>
-                    <div className="stat-div">
-                        <p>{currentSheet.stats.dexterity}</p>
-                    </div>
-                </div>
-                <div className="stats flex flex-col justify-center items-center">
-                    <small>Constitution</small>
-                    <h2>+{getModifier(currentSheet.stats.constitution)}</h2>
-                    <div className="stat-div">
-                        <p>{currentSheet.stats.constitution}</p>
-                    </div>
-                </div>
-                <div className="stats flex flex-col justify-center items-center">
-                    <small>Intelligence</small>
-                    <h2>+{getModifier(currentSheet.stats.intelligence)}</h2>
-                    <div className="stat-div">
-                        <p>{currentSheet.stats.intelligence}</p>
-                    </div>
-                </div>
-                <div className="stats flex flex-col justify-center items-center">
-                    <small>Wisdom</small>
-                    <h2>+{getModifier(currentSheet.stats.wisdom)}</h2>
-                    <div className="stat-div">
-                        <p>{currentSheet.stats.wisdom}</p>
-                    </div>
-                </div>
-                <div className="stats flex flex-col justify-center items-center">
-                    <small>Charisma</small>
-                    <h2>+{getModifier(currentSheet.stats.charisma)}</h2>
-                    <div className="stat-div">
-                        <p>{currentSheet.stats.charisma}</p>
-                    </div>
-                </div>
-            </div>
-            <div className="character-sheet-savingthrows flex justify-between mt-4">
-                <div className="savingthrow flex flex-col items-center">
-                    <small>Strength</small>
-                    <h5>+{currentSheet.saving_throws.strength.value}</h5>
-                </div>
-                <div className="savingthrow flex flex-col items-center">
-                    <small>Dexterity</small>
-                    <h5>+{currentSheet.saving_throws.dexterity.value}</h5>
-                </div>
-                <div className="savingthrow flex flex-col items-center">
-                    <small>Constitution</small>
-                    <h5>+{currentSheet.saving_throws.constitution.value}</h5>
-                </div>
-                <div className="savingthrow flex flex-col items-center">
-                    <small>Intelligence</small>
-                    <h5>+{currentSheet.saving_throws.intelligence.value}</h5>
-                </div>
-                <div className="savingthrow flex flex-col items-center">
-                    <small>Wisdom</small>
-                    <h5>+{currentSheet.saving_throws.wisdom.value}</h5>
-                </div>
-                <div className="savingthrow flex flex-col items-center">
-                    <small>Charisma</small>
-                    <h5>+{currentSheet.saving_throws.charisma.value}</h5>
-                </div>
-            </div>
+            <Stats stats = {currentSheet.stats}/>
+            <Skills 
+                skills = {currentSheet.skills}
+                stats = {currentSheet.stats}
+            />
         </div>
     )
 }
