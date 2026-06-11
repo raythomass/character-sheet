@@ -176,19 +176,19 @@ button {
     font-weight: 600;
 }
 
-.character-sheets-stats {
+.stats {
+    margin-top: 1rem;
     /* border: 1px solid red; */
 }
 
-.stats{
-    width: 15%;
-    padding: 0.5rem;
+.stat-container {
     background-color: var(--grey);
-    color: var(--black);
-    border-radius: 5px;
+    width: 15%;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
-.stat-div {
+.stat-number {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,6 +207,26 @@ button {
     border-radius: 5px;
 }
 
-.character-health {
+.health h4 {
+    font-family: "Caudex", serif;
+    font-weight: bold;
+}
+
+.health-temp {
+    color: var(--grey);
+}
+
+.skills {
+    margin-top: 1rem;
+}
+
+.skill-container {
+    width: 30%;
+}
+
+.skill-prof {
+    height: 1.5rem;
+    width: 1.5rem;
     background-color: var(--grey);
+    border-radius: 50%;
 }
