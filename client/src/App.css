@@ -230,3 +230,25 @@ button {
     background-color: var(--grey);
     border-radius: 50%;
 }
+
+/* Skill Profs */
+/* 0 = empty */
+.skill-prof.none {
+  background: transparent;
+  border: 1px dashed grey;
+}
+
+/* 1 = half proficiency */
+.skill-prof.half-prof {
+  background: grey;
+}
+
+/* 2 = proficiency */
+.skill-prof.prof {
+  background: black;
+}
+
+/* 3 = expertise */
+.skill-prof.expertise {
+  background: gold;
+}
