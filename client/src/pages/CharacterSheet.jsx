@@ -46,6 +46,7 @@ export const CharacterSheet = () => {
             <Skills 
                 skills = {currentSheet.skills}
                 stats = {currentSheet.stats}
+                profciencyBonus = {currentSheet.proficiency_bonus}
             />
         </div>
     )
