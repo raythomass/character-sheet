@@ -33,6 +33,7 @@ export const CharacterSheet = () => {
 
     return (
         <div className="character-sheet">
+          <h1>{currentSheet.proficiency_bonus}</h1>
             <div className="character-titles flex justify-between mt-6 items-center">
                 <ArmorClass ac={currentSheet.armor_class}/>
                 <CharacterDetails 
@@ -44,9 +45,10 @@ export const CharacterSheet = () => {
             </div>
             <Stats stats = {currentSheet.stats}/>
             <Skills 
+                characterId = {currentSheet._id}
                 skills = {currentSheet.skills}
                 stats = {currentSheet.stats}
-                profciencyBonus = {currentSheet.proficiency_bonus}
+                proficiencyBonus = {currentSheet.proficiency_bonus}
             />
         </div>
     )

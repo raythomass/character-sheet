@@ -4,34 +4,74 @@ import { useAuthContext } from './useAuthContext'
 import toast from 'react-hot-toast'
 
 export const useUpdateCharacter = () => {
-    const { dispatch } = useSheetContext()
-    const { user } = useAuthContext()
+  const { dispatch } = useSheetContext();
+  const { user } = useAuthContext();
 
-    useEffect(() => {
-        const updateCharacter = async (id, updatedData) => {
-            try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/character/${id}`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${user.token}`,
-                    },
-                    body: JSON.stringify(updatedData),
-                })
-
-                const json = await response.json()
-
-                if(!response.ok) {
-                    toast.error(json.error)
-                }
-                if(response.ok) {
-                    toast.success('Character Created')
-                    dispatch({type:'UPDATE_SHEET', payload:json})
-                }
-            } catch (error) {
-                toast.error(error.message)
-            }
+  const updateCharacter = async (id, updatedData) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/character/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+          body: JSON.stringify(updatedData),
         }
-        updateCharacter()
-    }, [user, dispatch])
-}
+      );
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        toast.error(json.error);
+        return null;
+      }
+
+      dispatch({
+        type: "UPDATE_SHEET",
+        payload: json,
+      });
+
+      return json;
+    } catch (error) {
+      toast.error(error.message);
+      return null;
+    }
+  };
+
+  return { updateCharacter };
+};
+
+// export const useUpdateCharacter = () => {
+//     const { dispatch } = useSheetContext()
+//     const { user } = useAuthContext()
+
+//     useEffect(() => {
+//         const updateCharacter = async (id, updatedData) => {
+//             try {
+//                 const response = await fetch(`${import.meta.env.VITE_API_URL}/api/character/${id}`, {
+//                     method: 'PATCH',
+//                     headers: {
+//                         'Content-Type': 'application/json',
+//                         'Authorization': `Bearer ${user.token}`,
+//                     },
+//                     body: JSON.stringify(updatedData),
+//                 })
+
+//                 const json = await response.json()
+
+//                 if(!response.ok) {
+//                     toast.error(json.error)
+//                 }
+//                 if(response.ok) {
+//                     toast.success('Character Created')
+//                     dispatch({type:'UPDATE_SHEET', payload:json})
+//                 }
+//             } catch (error) {
+//                 toast.error(error.message)
+//             }
+//         }
+//         updateCharacter()
+//     }, [user, dispatch])
+// }
