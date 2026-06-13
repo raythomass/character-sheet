@@ -232,23 +232,32 @@ button {
 }
 
 /* Skill Profs */
-/* 0 = empty */
 .skill-prof.none {
   background: transparent;
   border: 1px dashed grey;
 }
 
-/* 1 = half proficiency */
 .skill-prof.half-prof {
   background: grey;
 }
 
-/* 2 = proficiency */
 .skill-prof.prof {
   background: black;
 }
 
-/* 3 = expertise */
 .skill-prof.expertise {
   background: gold;
+}
+
+.saving-sense-extra {
+    margin-top: 1rem;
+}
+
+.extra-details {
+    width: 25%;
+}
+
+.extra-details small {
+    background-color: var(--grey);
+    border-radius: 0.5rem;
 }
