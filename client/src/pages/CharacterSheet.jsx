@@ -9,6 +9,9 @@ import ArmorClass from "../components/ArmorClass"
 import CharacterDetails from "../components/CharacterDetails"
 import Health from "../components/Health"
 import Skills from "../components/Skills"
+import SavingThrows from "../components/SavingThrows"
+import Senses from "../components/Senses"
+import ExtraDetails from "../components/ExtraDetails"
 
 export const CharacterSheet = () => {
     const { id } = useParams()
@@ -29,11 +32,10 @@ export const CharacterSheet = () => {
     return <h5 className="mt-16 text-center">You do not have access to this character.</h5>;
   }
 
-  const getModifier = (score) => Math.floor((score - 10) / 2);
+  const getModifier = (score) => Math.floor((score - 10) / 2)
 
     return (
         <div className="character-sheet">
-          <h1>{currentSheet.proficiency_bonus}</h1>
             <div className="character-titles flex justify-between mt-6 items-center">
                 <ArmorClass ac={currentSheet.armor_class}/>
                 <CharacterDetails 
@@ -44,6 +46,16 @@ export const CharacterSheet = () => {
                 <Health health = {currentSheet.health}/>
             </div>
             <Stats stats = {currentSheet.stats}/>
+            <div className="saving-sense-extra border-2 border-amber-950">
+              <SavingThrows savingThrows = {currentSheet.saving_throws}/>
+              <Senses senses = {currentSheet.senses}/>
+              <ExtraDetails 
+                proficiencyBonus = {currentSheet.proficiency_bonus}
+                initiative = {currentSheet.initiative}
+                walkingSpeed = {currentSheet.walking_speed}
+                inspiration = {currentSheet.inspiration}
+              />
+            </div>
             <Skills 
                 characterId = {currentSheet._id}
                 skills = {currentSheet.skills}
