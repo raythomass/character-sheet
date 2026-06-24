@@ -36,7 +36,7 @@ export const CharacterSheet = () => {
 
     return (
         <div className="character-sheet">
-            <div className="character-titles flex justify-between mt-6 items-center">
+            <div className="character-titles flex justify-between mt-6 items-center border-2 border-amber-950">
                 <ArmorClass ac={currentSheet.armor_class}/>
                 <CharacterDetails 
                     name = {currentSheet.character_name}
@@ -45,16 +45,24 @@ export const CharacterSheet = () => {
                 />
                 <Health health = {currentSheet.health}/>
             </div>
-            <Stats stats = {currentSheet.stats}/>
-            <div className="saving-sense-extra border-2 border-amber-950">
-              <SavingThrows savingThrows = {currentSheet.saving_throws}/>
-              <Senses senses = {currentSheet.senses}/>
+            <div className="extra-details-container border-2 border-amber-950">
               <ExtraDetails 
                 proficiencyBonus = {currentSheet.proficiency_bonus}
                 initiative = {currentSheet.initiative}
                 walkingSpeed = {currentSheet.walking_speed}
                 inspiration = {currentSheet.inspiration}
               />
+            </div>
+            <Stats stats = {currentSheet.stats}/>
+            <div className="saving-sense-extra border-2 border-amber-950">
+              <SavingThrows savingThrows = {currentSheet.saving_throws}/>
+              <Senses senses = {currentSheet.senses}/>
+              {/* <ExtraDetails 
+                proficiencyBonus = {currentSheet.proficiency_bonus}
+                initiative = {currentSheet.initiative}
+                walkingSpeed = {currentSheet.walking_speed}
+                inspiration = {currentSheet.inspiration}
+              /> */}
             </div>
             <Skills 
                 characterId = {currentSheet._id}
