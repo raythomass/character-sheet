@@ -14,7 +14,7 @@ export const Login = () => {
 
     return(
         <div className="auth flex flex-col">
-            <div className="flex justify-center">
+            <div className="auth-page-title flex justify-center">
                 <h3>Login to your account</h3>
             </div>
             <form className="auth-form flex flex-col justify-center" onSubmit={handleSubmit}>
