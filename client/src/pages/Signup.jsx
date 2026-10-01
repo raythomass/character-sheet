@@ -13,7 +13,7 @@ export const Signup = () => {
 
     return(
         <div className="auth flex flex-col">
-            <div className="flex justify-center">
+            <div className="auth-page-title flex justify-center">
                 <h3>Create a new account</h3>
             </div>
             <form className="auth-form flex flex-col justify-center" onSubmit={handleSubmit}>
